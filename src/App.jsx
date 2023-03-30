@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as XLSX from "xlsx";
 import { faker } from "@faker-js/faker";
 import fs from "fs";
+import "./App.css";
 
 function App() {
   // Define the number of rows you want to generate
@@ -77,18 +78,28 @@ function App() {
   };
 
   return (
-    <div>
-      <div>
-        <h1>Adult</h1>
-        <input type="number" placeholder={numberOfAdults} onChange={(e) => setNumberOfAdults(e.target.value)}/>
-        <h1>Child</h1>
-        <input type="number" placeholder={numberOfChildren} onChange={(e) => setumberOfChildren(e.target.value)}/>
-        <h1>Infant</h1>
-        <input type="number" placeholder={numberOfInfants} onChange={(e) => setNumberOfInfants(e.target.value)}/>
+  <div className="container">
+    <div className="form">
+      <h1 className="form-title">Generate User Data</h1>
+      <div className="form-inputs">
+        <div className="form-input">
+          <label htmlFor="adults" className="form-label">Number of Adults:</label>
+          <input type="number" id="adults" className="form-input-field" value={numberOfAdults} onChange={(e) => setNumberOfAdults(e.target.value)} />
+        </div>
+        <div className="form-input">
+          <label htmlFor="children" className="form-label">Number of Children:</label>
+          <input type="number" id="children" className="form-input-field" value={numberOfChildren} onChange={(e) => setNumberOfChildren(e.target.value)} />
+        </div>
+        <div className="form-input">
+          <label htmlFor="infants" className="form-label">Number of Infants:</label>
+          <input type="number" id="infants" className="form-input-field" value={numberOfInfants} onChange={(e) => setNumberOfInfants(e.target.value)} />
+        </div>
       </div>
-      <button onClick={handleClick}>Download Excel file</button>
+      <button className="btn btn-download" onClick={handleClick}>Download Excel file</button>
     </div>
-  );
+  </div>
+);
+
 }
 
 export default App;
