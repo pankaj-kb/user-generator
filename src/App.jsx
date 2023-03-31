@@ -11,6 +11,8 @@ function App() {
   const [numberOfChildren, setNumberOfChildren] = useState(5);
   const [numberOfInfants, setNumberOfInfants] = useState(5);
 
+  // HandleClick Function
+
   const handleClick = () => {
     // Generate the data for adults
     const adultData = [];
@@ -54,15 +56,23 @@ function App() {
     }
 
     // Combine all the data into one array
-    const data = [...adultData, ...childData, ...infantData];
+    const data = [...adultData, ...childData, ...infantData].sort((a, b) =>
+      a.lastName.localeCompare(b.lastName)
+    );
 
     // Create a new workbook and add the data to a worksheet
     const wb = XLSX.utils.book_new();
-    const ws = XLSX.utils.json_to_sheet(data);
+    const headers = ["lastName", "firstName", "birthdate", "type"];
+    const dataWithHeaders = [
+      headers,
+      ...data.map((item) => headers.map((header) => item[header])),
+    ];
+    const ws = XLSX.utils.aoa_to_sheet(dataWithHeaders, { header: headers });
+
     XLSX.utils.book_append_sheet(wb, ws, "Data");
 
     // Write the workbook to a file named "user_data_{timestamp}.xlsx"
-    const fileName = `user_data_${Date.now()}.xlsx`;
+    const fileName = `userDB.xlsx`;
     XLSX.writeFile(wb, fileName);
 
     // Download the file
