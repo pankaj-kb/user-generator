@@ -8,7 +8,7 @@ function App() {
   // Define the number of rows you want to generate
   const [numberOfAdults, setNumberOfAdults] = useState(20);
   // const numberOfAdults = 20;
-  const [numberOfChildren, setumberOfChildren] = useState(5);
+  const [numberOfChildren, setNumberOfChildren] = useState(5);
   const [numberOfInfants, setNumberOfInfants] = useState(5);
 
   const handleClick = () => {
@@ -78,28 +78,60 @@ function App() {
   };
 
   return (
-  <div className="container">
-    <div className="form">
-      <h1 className="form-title">Generate User Data</h1>
-      <div className="form-inputs">
-        <div className="form-input">
-          <label htmlFor="adults" className="form-label">Number of Adults:</label>
-          <input type="number" id="adults" className="form-input-field" value={numberOfAdults} onChange={(e) => setNumberOfAdults(e.target.value)} />
+    <div className="container">
+      <div className="form">
+        <h1 className="form-title">Generate User Data</h1>
+        <div className="form-inputs">
+          <div className="form-input">
+            <label htmlFor="adults" className="form-label">
+              Number of Adults:
+            </label>
+            <input
+              type="number"
+              id="adults"
+              className="form-input-field"
+              value={numberOfAdults}
+              onChange={(e) => setNumberOfAdults(e.target.value)}
+            />
+          </div>
+          <div className="form-input">
+            <label htmlFor="children" className="form-label">
+              Number of Children:
+            </label>
+            <input
+              type="number"
+              id="children"
+              className="form-input-field"
+              value={numberOfChildren}
+              onChange={(e) => setNumberOfChildren(e.target.value)}
+            />
+          </div>
+          <div className="form-input">
+            <label htmlFor="infants" className="form-label">
+              Number of Infants:
+            </label>
+            <input
+              type="number"
+              id="infants"
+              className="form-input-field"
+              value={numberOfInfants}
+              onChange={(e) => setNumberOfInfants(e.target.value)}
+            />
+          </div>
         </div>
-        <div className="form-input">
-          <label htmlFor="children" className="form-label">Number of Children:</label>
-          <input type="number" id="children" className="form-input-field" value={numberOfChildren} onChange={(e) => setNumberOfChildren(e.target.value)} />
-        </div>
-        <div className="form-input">
-          <label htmlFor="infants" className="form-label">Number of Infants:</label>
-          <input type="number" id="infants" className="form-input-field" value={numberOfInfants} onChange={(e) => setNumberOfInfants(e.target.value)} />
-        </div>
+        <button className="btn btn-download" onClick={handleClick}>
+          Download Excel file
+        </button>
       </div>
-      <button className="btn btn-download" onClick={handleClick}>Download Excel file</button>
+      <a
+        className="signature"
+        href="https://www.linkedin.com/in/pankajkb/"
+        target="_blank"
+      >
+        Made with ❤️ by Pankaj
+      </a>
     </div>
-  </div>
-);
-
+  );
 }
 
 export default App;
